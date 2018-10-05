@@ -8,6 +8,11 @@
   "start_url": "/",
   "icons": [
     {
+      "src": "assets/icons/akumina.png",
+      "sizes": "49x43",
+      "type": "image/png"
+    },
+    {
       "src": "assets/icons/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png"

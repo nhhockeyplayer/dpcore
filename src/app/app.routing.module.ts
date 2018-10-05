@@ -1,5 +1,4 @@
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router'
-import {ContentprojectionComponent} from './components/shared/components/contentprojection/contentprojection.component'
 import {NgModule} from '@angular/core'
 
 /**
@@ -33,6 +32,7 @@ export const routerConfig: Routes = [
 @NgModule({
   // useHash supports github.io demo page, remove in your app
   imports: [
+    RouterModule,
     RouterModule.forRoot(routerConfig, {
       useHash: true,
       preloadingStrategy: PreloadAllModules

@@ -11,6 +11,7 @@ import {ReactiveFormsModule} from '@angular/forms'
 import {FlexLayoutModule} from '@angular/flex-layout'
 import SharedModule from './components/shared/shared.module'
 import {ContentprojectionModule} from './components/shared/components/contentprojection/contentprojection.module'
+import {RouterModule} from '@angular/router'
 
 @NgModule({
   declarations: [
@@ -24,12 +25,14 @@ import {ContentprojectionModule} from './components/shared/components/contentpro
 
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
 
+    RouterModule,
     AppRoutingModule,
 
     MaterialModule,
 
     SharedModule.forRoot(),
-    ContentprojectionModule
+    ContentprojectionModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

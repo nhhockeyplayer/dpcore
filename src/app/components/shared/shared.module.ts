@@ -24,6 +24,7 @@ export const routerConfig: Routes = [
     CommonModule,
     FormsModule,
 
+    RouterModule,
     RouterModule.forChild(routerConfig),
 
     ContentprojectorModule,

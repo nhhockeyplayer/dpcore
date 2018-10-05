@@ -108,6 +108,10 @@
     ],
     "unified-signatures": true,
     "variable-name": false,
+    "semicolon": [
+      true,
+      "never"
+    ],
     "whitespace": [
       true,
       "check-branch",

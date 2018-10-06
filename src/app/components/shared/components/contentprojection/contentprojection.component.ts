@@ -14,10 +14,10 @@ export class ContentprojectionComponent implements OnInit, AfterViewInit, OnDest
   }
 
   ngOnInit() {
-    this.microService.project()
-      .subscribe((content) => {
-        this.content = content
-      })
+    // this.microService.projectorSubject$
+    //   .subscribe((content) => {
+    //     this.content = content
+    //   })
   }
 
   ngAfterViewInit() {

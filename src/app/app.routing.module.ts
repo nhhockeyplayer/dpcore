@@ -20,17 +20,15 @@ export const routerConfig: Routes = [
     pathMatch: 'full'
   }, {
     path: 'content',
-    loadChildren: './components/shared/shared.module'
-    // component: ContentprojectionComponent,
-    // data: {title: 'Content Projection'}
+    loadChildren: './components/shared/shared.module#SharedModule'
   }, {
     path: '**',
     redirectTo: '/'
   },
 ]
 
+// useHash supports github.io demo page, remove in your app
 @NgModule({
-  // useHash supports github.io demo page, remove in your app
   imports: [
     RouterModule,
     RouterModule.forRoot(routerConfig, {

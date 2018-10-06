@@ -1,4 +1,3 @@
-
 import {RouterModule, Routes} from '@angular/router'
 import {NgModule} from '@angular/core'
 import {CommonModule} from '@angular/common'
@@ -8,7 +7,8 @@ import {ContentprojectionModule} from './components/contentprojection/contentpro
 import {ContentprojectorService} from './services/contentprojector/contentprojector.service'
 import {ModuleWithProviders} from '@angular/compiler/src/core'
 import {ContentprojectorModule} from './services/contentprojector/contentprojector.module'
-export const routerConfig: Routes = [
+
+const routerConfig: Routes = [
   {
     path: 'contentprojector',
     loadChildren: './services/contentprojector/contentprojector.module'
@@ -51,4 +51,4 @@ export class SharedModule {
   }
 }
 
-export default SharedModule
+// export default SharedModule

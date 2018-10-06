@@ -6,10 +6,9 @@ import {ServiceWorkerModule} from '@angular/service-worker'
 import {environment} from '../environments/environment'
 import {HttpClientModule} from '@angular/common/http'
 import {AppRoutingModule} from './app.routing.module'
-import {MaterialModule} from './material/material.module'
 import {ReactiveFormsModule} from '@angular/forms'
 import {FlexLayoutModule} from '@angular/flex-layout'
-import SharedModule from './components/shared/shared.module'
+
 import {ContentprojectionModule} from './components/shared/components/contentprojection/contentprojection.module'
 import {RouterModule} from '@angular/router'
 
@@ -28,9 +27,8 @@ import {RouterModule} from '@angular/router'
     RouterModule,
     AppRoutingModule,
 
-    MaterialModule,
+    // MaterialModule,
 
-    SharedModule.forRoot(),
     ContentprojectionModule,
 
   ],

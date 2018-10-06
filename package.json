@@ -29,6 +29,7 @@
     "@angular/router": "^6.0.3",
     "@angular/service-worker": "^6.0.3",
     "core-js": "^2.5.4",
+    "npm": "^6.4.1",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
@@ -42,7 +43,6 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^10.11.4",
     "codelyzer": "^4.5.0",
-    "http-server": "^0.11.1",
     "jasmine-core": "^3.2.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^3.0.0",

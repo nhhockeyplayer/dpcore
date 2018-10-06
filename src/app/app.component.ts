@@ -15,23 +15,46 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   ]
 
   updatesAvailable: boolean = false
+  content: any
 
-  constructor(updates: SwUpdate, private microService: ContentprojectorService) {
+  constructor(private updates: SwUpdate, private microService: ContentprojectorService) {
 
-    updates.activateUpdate()
-      .then(() => {
-        // refresh new service workers new version of the app
-        document.location.reload()
-      })
+    // updates.activateUpdate()
+    //   .then(() => {
+    //     // refresh new service workers new version of the app
+    //     document.location.reload()
+    //   })
   }
 
   ngOnInit() {
+    if (this.updates.isEnabled) {
+
+      this.updates.available.subscribe(() => {
+
+        if (confirm('New version available. Load New Version?')) {
+
+          window.location.reload()
+        }
+      })
+    }
+
+    // this.microService.project()
+    //   .subscribe((content) => {
+    //     this.content = content
+    //   })
   }
 
   ngAfterViewInit() {
   }
 
   ngOnDestroy() {
+  }
+
+  onClick() {
+    // this.microService.projectorSubject$
+    //   .subscribe((content) => {
+    //     this.content = content
+    //   })
   }
 
 }

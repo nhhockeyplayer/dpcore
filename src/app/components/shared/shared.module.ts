@@ -11,11 +11,11 @@ import {ContentprojectorModule} from './services/contentprojector/contentproject
 const routerConfig: Routes = [
   {
     path: 'contentprojector',
-    loadChildren: './services/contentprojector/contentprojector.module'
+    loadChildren: './services/contentprojector/contentprojector.module#ContentprojectorModule'
   },
   {
     path: 'contentprojection',
-    loadChildren: './components/contentprojection/contentprojection.module'
+    loadChildren: './components/contentprojection/contentprojection.module#ContentprojectionModule'
   }
 ]
 

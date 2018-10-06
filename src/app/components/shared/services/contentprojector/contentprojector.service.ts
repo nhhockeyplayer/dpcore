@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 import {BehaviorSubject} from 'rxjs/index'
+import {map, take, tap} from 'rxjs/internal/operators'
+import {ChuckNorris} from '../../model/ChuckNorris'
 
 /**
  * MicroService
@@ -30,40 +32,37 @@ export class ContentprojectorService {
     console.log('SINGLETON Loaded Instance ContentprojectorService')
 
     this.body = ''
-    // this.newContent = `<html>
-    //                       <head>
-    //                         <script language="Javascript">
-    //                             function replaceContent(NC) {
-    //                                     document.open();
-    //                                     document.write(NC);
-    //                                     document.close();
-    //                                   }
-    //                         </script>
-    //                       </head>
-    //                    <body  onload="replaceContent($(this.newContent)"> $(this.body)</body>
-    //                    </html>`
-	//
+    this.newContent = `<html>
+                          <head>
+                            <script language="Javascript">
+                                function replaceContent(NC) {
+                                        document.open();
+                                        document.write(NC);
+                                        document.close();
+                                      }
+                            </script>
+                          </head>
+                       <body  onload="replaceContent($(this.newContent)"> $(this.body)</body>
+                       </html>`
 
   }
 
   project() {
-    // return this.http.get(ContentprojectorService.arbitrarySSLWebsite)
-    // .pipe(
-    //   take(1),
-    //   tap((item) => {
-    //     console.log('this is the item coming in on observable of targeted website\m' + item)
-    //     // this.body = item.value
-    //     return item
-    //   }),
-    //   map((item) => {
-    //     const preparedTarget = new ChuckNorris(0, this.newContent, ContentprojectorService.arbitrarySSLWebsite)
-    //
-    //     this.projectorSubject$.next(item)
-    //     this.projectorSubject$.complete()
-    //   }),
-    // )
+    return this.http.get(ContentprojectorService.arbitrarySSLWebsite)
+      .pipe(
+        take(1),
+        tap((item) => {
+          console.log('this is the item coming in on observable of targeted website\m' + item)
+          // this.body = item.value
+          return item
+        }),
+        map((item) => {
+          const preparedTarget = new ChuckNorris(0, this.newContent, ContentprojectorService.arbitrarySSLWebsite)
 
-    // return this.newContent
+          this.projectorSubject$.next(item)
+          this.projectorSubject$.complete()
+        }),
+      )
   }
 
 }

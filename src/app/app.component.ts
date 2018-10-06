@@ -19,14 +19,14 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private updates: SwUpdate, private microService: ContentprojectorService) {
 
+  }
+
+  ngOnInit() {
     // updates.activateUpdate()
     //   .then(() => {
     //     // refresh new service workers new version of the app
     //     document.location.reload()
     //   })
-  }
-
-  ngOnInit() {
     if (this.updates.isEnabled) {
 
       this.updates.available.subscribe(() => {
@@ -38,10 +38,10 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       })
     }
 
-    // this.microService.project()
-    //   .subscribe((content) => {
-    //     this.content = content
-    //   })
+    this.microService.project()
+      .subscribe((content) => {
+        this.content = content
+      })
   }
 
   ngAfterViewInit() {
@@ -51,10 +51,10 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onClick() {
-    // this.microService.projectorSubject$
-    //   .subscribe((content) => {
-    //     this.content = content
-    //   })
+    this.microService.projectorSubject$
+      .subscribe((content) => {
+        this.content = content
+      })
   }
 
 }

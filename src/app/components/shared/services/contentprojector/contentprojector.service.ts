@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
-import {BehaviorSubject} from 'rxjs/index'
+import {BehaviorSubject, from} from 'rxjs/index'
 import {map, take, tap} from 'rxjs/internal/operators'
-import {ChuckNorris} from '../../model/ChuckNorris'
 
 /**
  * MicroService
@@ -14,6 +13,9 @@ import {ChuckNorris} from '../../model/ChuckNorris'
  *    emits 1 item
  *    multicasts item to observers
  *    completes and closes stream
+ *
+ *    The ChuckNorris Joke site https://api.chucknorris.io/jokes/random
+ *    was the only SSL website available to test against to fabricate/simulate HTML full page  projected document
  */
 
 @Injectable({
@@ -22,47 +24,29 @@ import {ChuckNorris} from '../../model/ChuckNorris'
 export class ContentprojectorService {
   public static kensAPI = 'http://meanstackconsulting.ddns.net:8080/#/about'
   public static arbitrarySSLWebsite = 'https://api.chucknorris.io/jokes/random'
-
-  body: string = ''
-  newContent: string = ''
+  public static akuminaSSLVideo = 'https://www.youtube.com/watch?v=3v8rwT559iY&output=embed&autoplay=1'
 
   public projectorSubject$ = new BehaviorSubject<any>('')
 
   constructor(private http: HttpClient) {
     console.log('SINGLETON Loaded Instance ContentprojectorService')
-
-    this.body = ''
-    this.newContent = `<html>
-                          <head>
-                            <script language="Javascript">
-                                function replaceContent(NC) {
-                                        document.open();
-                                        document.write(NC);
-                                        document.close();
-                                      }
-                            </script>
-                          </head>
-                       <body  onload="replaceContent($(this.newContent)"> $(this.body)</body>
-                       </html>`
-
   }
 
   project() {
-    return this.http.get(ContentprojectorService.arbitrarySSLWebsite)
+    const array = [ContentprojectorService.akuminaSSLVideo]
+    const source$ = from(array)
       .pipe(
         take(1),
         tap((item) => {
-          console.log('this is the item coming in on observable of targeted website\m' + item)
-          // this.body = item.value
           return item
         }),
         map((item) => {
-          const preparedTarget = new ChuckNorris(0, this.newContent, ContentprojectorService.arbitrarySSLWebsite)
-
           this.projectorSubject$.next(item)
           this.projectorSubject$.complete()
-        }),
+          return item
+        })
       )
+    return source$
   }
 
 }

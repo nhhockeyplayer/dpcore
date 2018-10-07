@@ -4,9 +4,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
+first install chrome extension
+
+https://chrome.google.com/webstore/detail/ignore-x-frame-headers/gleekbfjekiniecknbkamfmkohkpodhe/related
+
+then execute server
+
 
 cd dist/dpcore
+
 http-server -o
+
 navigate to http://127.0.0.1:8080/#/
 
 ## Code scaffolding
@@ -16,7 +24,9 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 ng build
+
 ng build --prod
+
 ng build --prod --aot
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.

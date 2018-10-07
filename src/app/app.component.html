@@ -1,30 +1,4 @@
-<span *ngIf="updatesAvailable">
-  A new update exists for your app
-</span>
+<iframe width="420" height="345" [src]="content | safe" allowfullscreen>
+</iframe>
 
-<div style="text-align:center">
-  <h1> {{ title }} </h1>
-
-  <img width="300" alt="Akumina Logo"
-       src="data:image/png;base64,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">
-</div>
-
-<h1> Plugged in content below activated on router link button router url invocation change</h1>
-
-<app-contentprojection></app-contentprojection>
 <router-outlet></router-outlet>
-
-
-
-<!--<div>-->
-  <!--<a [routerLink]="['/content']" [queryParams]="{debug: true}" queryParamsHandling="merge">-->
-    <!--<app-contentprojection></app-contentprojection>-->
-  <!--</a>-->
-  <!--&lt;!&ndash;<button (click) = "onCLick()" routerLink="/content">click to activate route for contentprojector</button>&ndash;&gt;-->
-  <!--<router-outlet></router-outlet>-->
-<!--</div>-->
-
-<!--<app-contentprojection></app-contentprojection>-->
-
-
-

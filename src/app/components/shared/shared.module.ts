@@ -49,4 +49,3 @@ export class SharedModule {
   }
 }
 
-// export default SharedModule

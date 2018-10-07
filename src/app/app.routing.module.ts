@@ -7,12 +7,6 @@ import {NgModule} from '@angular/core'
  *  loadChildren: 'app/orders/orders.module#OrdersModule'
  */
 
-// one of the goals of the data resolver is to retrieve the data so that the data is already available when the target
-// component gets created.
-//
-// think about implementing resolver
-//
-
 export const routerConfig: Routes = [
   {
     path: '',

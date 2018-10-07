@@ -11,10 +11,13 @@ import {FlexLayoutModule} from '@angular/flex-layout'
 
 import {ContentprojectionModule} from './components/shared/components/contentprojection/contentprojection.module'
 import {RouterModule} from '@angular/router'
+import {SafePipe} from './tools/safe.pipe'
+import {MaterialModule} from './packages/material/material.module'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,7 @@ import {RouterModule} from '@angular/router'
     RouterModule,
     AppRoutingModule,
 
-    // MaterialModule,
+    MaterialModule,
 
     ContentprojectionModule,
 

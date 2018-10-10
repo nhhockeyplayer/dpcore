@@ -10,22 +10,37 @@
 
 <!--FAILED-->
 <!--<app-contentprojection>-->
-<!--<iframe width="420" height="345" [src]="content | unsafe" #iframe></iframe>-->
+  <!--<iframe width="420" height="345" [src]="content | unsafe" #iframe  [style.display]="'none'"></iframe>-->
+<!--</app-contentprojection>-->
+
+<!--SUCCESS-->
+<!--<app-contentprojection>-->
+<!--<iframe width="420" height="345" [src]="getContent() | unsafe" #iframe ></iframe>-->
+<!--</app-contentprojection>-->
+
+<!--FAILED-->
+<!--<app-contentprojection>-->
+  <!--<iframe width="420" height="345" [src]="javascript: decrypt(`${{encryptedContent}}`) | unsafe" #iframe ></iframe>-->
 <!--</app-contentprojection>-->
 
 <app-contentprojection>
-  <div class="app-contentprojection">
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Favorite food" value="Sushi">
-      </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <textarea matInput placeholder="Leave a comment"></textarea>
-      </mat-form-field>
-    </form>
-  </div>
 </app-contentprojection>
+
+<!--SUCCESS-->
+<!--<app-contentprojection>-->
+<!--<div class="app-contentprojection">-->
+<!--<form class="example-form">-->
+<!--<mat-form-field class="example-full-width">-->
+<!--<input matInput placeholder="Favorite food" value="Sushi">-->
+<!--</mat-form-field>-->
+
+<!--<mat-form-field class="example-full-width">-->
+<!--<textarea matInput placeholder="Leave a comment"></textarea>-->
+<!--</mat-form-field>-->
+<!--</form>-->
+<!--</div>-->
+<!--</app-contentprojection>-->
 
 <router-outlet></router-outlet>
 

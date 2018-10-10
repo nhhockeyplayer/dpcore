@@ -1,4 +1,3 @@
-import {BrowserModule} from '@angular/platform-browser'
 import {NgModule} from '@angular/core'
 
 import {AppComponent} from './app.component'
@@ -12,7 +11,7 @@ import {FlexLayoutModule} from '@angular/flex-layout'
 import {RouterModule} from '@angular/router'
 
 import {MaterialModule} from './components/shared/packages/material/material.module'
-import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {SharedModule} from './components/shared/shared.module'
 import {CommonModule} from '@angular/common'
 import {UnSafePipe} from './components/shared/pipes/unsafe.pipe'
@@ -23,9 +22,9 @@ import {UnSafePipe} from './components/shared/pipes/unsafe.pipe'
     UnSafePipe
   ],
   imports: [
-    BrowserModule,
+    // BrowserModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule,
+    // NoopAnimationsModule,
     HttpClientModule,
 
     FormsModule,

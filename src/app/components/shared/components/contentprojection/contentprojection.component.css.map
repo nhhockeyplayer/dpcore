@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAKE,YAAO;EACL,OAAO,EAAE,IAAI;EACb,gBAAgB,EAAE,GAAG;AAGvB,aAAU;EAER,OAAO,EAAE,IAAI",
+"sources": ["contentprojection.component.scss"],
 "names": [],
 "file": "contentprojection.component.css"
 }

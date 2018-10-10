@@ -8,11 +8,11 @@ import {ModuleWithProviders} from '@angular/compiler/src/core'
 import {FlexLayoutModule} from '@angular/flex-layout'
 import {HttpClientModule} from '@angular/common/http'
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations'
-import {BrowserModule} from '@angular/platform-browser'
+
 import {ContentprojectionComponent} from './components/contentprojection/contentprojection.component'
 import {ContentprojectorService} from './services/singleton-services/contentprojector.service'
 import {MaterialModule} from './packages/material/material.module'
-
+import {AkuminaIFrameComponent} from './components/akumina-frame/akumina-iframe.component'
 
 const routerConfig: Routes = [
   {path: 'contentprojection', component: ContentprojectionComponent, data: {title: 'Contentprojection'}},
@@ -21,9 +21,6 @@ const routerConfig: Routes = [
 
 @NgModule({
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    NoopAnimationsModule,
     HttpClientModule,
 
     FormsModule,
@@ -37,10 +34,10 @@ const routerConfig: Routes = [
     MaterialModule
   ],
   declarations: [
-    ContentprojectionComponent
+    ContentprojectionComponent,
+    AkuminaIFrameComponent
   ],
   exports: [
-    BrowserModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
     HttpClientModule,
@@ -53,7 +50,8 @@ const routerConfig: Routes = [
     CommonModule,
     MaterialModule,
 
-    ContentprojectionComponent
+    ContentprojectionComponent,
+    AkuminaIFrameComponent
   ]
 })
 export class SharedModule {

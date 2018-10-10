@@ -4,8 +4,20 @@
 
 <!--<ng-content select="contentprojection"></ng-content>-->
 
+<!--<div [style.display]="'none'">-->
+<!--<ng-content></ng-content>-->
+<!--</div>-->
+
+<!--<div>-->
+<!--<ng-content></ng-content>-->
+<!--</div>-->
+
+<!--<app-akumina-iframe #template></app-akumina-iframe>-->
+<ng-template #akumina>
+  <app-akumina-iframe [template]="akumina"></app-akumina-iframe>
+</ng-template>
 
 
-<div>
-  <ng-content></ng-content>
-</div>
+<ng-content *ngIf="!template"></ng-content>
+
+<ng-container *ngIf="template" [ngTemplateOutlet]="template"></ng-container>

@@ -1,5 +1,4 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core'
-import {ContentprojectorService} from '../../services/singleton-services/contentprojector.service'
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core'
 
 @Component({
   selector: 'app-contentprojection',
@@ -7,28 +6,15 @@ import {ContentprojectorService} from '../../services/singleton-services/content
   styleUrls: ['./contentprojection.component.scss']
 })
 export class ContentprojectionComponent implements OnInit, AfterViewInit, OnDestroy {
-
-  content: any
-
-  constructor(private microService: ContentprojectorService) {
-  }
+  @ViewChild('akumina') template
 
   ngOnInit() {
-    this.microService.projectorSubject$
-      .subscribe((content) => {
-        this.content = content
-      })
   }
 
   ngAfterViewInit() {
+    console.log(this.template)
   }
 
   ngOnDestroy() {
   }
-
 }
-
-//
-// template: `
-//               <ng-content select="app-contentprojection"></ng-content>
-//             `,

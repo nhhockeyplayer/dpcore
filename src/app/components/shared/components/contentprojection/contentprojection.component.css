@@ -1,3 +1,7 @@
-
+:host iframe {
+  display: none;
+  background-color: red; }
+:host.display {
+  display: none; }
 
 /*# sourceMappingURL=contentprojection.component.css.map */

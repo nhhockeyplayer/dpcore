@@ -13,6 +13,7 @@ import {ContentprojectionComponent} from './components/contentprojection/content
 import {ContentprojectorService} from './services/singleton-services/contentprojector.service'
 import {MaterialModule} from './packages/material/material.module'
 import {AkuminaIFrameComponent} from './components/akumina-frame/akumina-iframe.component'
+import {ResponsiveService} from './services/singleton-services/responsive.service'
 
 const routerConfig: Routes = [
   {path: 'contentprojection', component: ContentprojectionComponent, data: {title: 'Contentprojection'}},
@@ -58,7 +59,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [ContentprojectorService]
+      providers: [ResponsiveService, ContentprojectorService]
     }
   }
 }

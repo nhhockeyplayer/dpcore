@@ -22,11 +22,8 @@ import {UnSafePipe} from './components/shared/pipes/unsafe.pipe'
     UnSafePipe
   ],
   imports: [
-    // BrowserModule,
     BrowserAnimationsModule,
-    // NoopAnimationsModule,
     HttpClientModule,
-
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,

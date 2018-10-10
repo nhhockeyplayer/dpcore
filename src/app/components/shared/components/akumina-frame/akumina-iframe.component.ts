@@ -1,13 +1,14 @@
 import {AfterViewInit, Component, Input, OnDestroy, OnInit} from '@angular/core'
 import {ContentprojectorService} from '../../services/singleton-services/contentprojector.service'
+import {DomSanitizer} from '@angular/platform-browser'
+import {takeLast} from 'rxjs/internal/operators'
 
 @Component({
   selector: 'app-akumina-iframe',
   template: `
     <iframe #akuminaiframe
-            id='akuminaiframe'
-            src='{{url}} | unsafe'
-            (load)='onLoad()'>
+            [id]='akuminaiframe'
+            [src]='url' >
     </iframe>
   `,
   styleUrls: ['./akumina-iframe.component.scss']
@@ -17,18 +18,23 @@ export class AkuminaIFrameComponent implements OnInit, AfterViewInit, OnDestroy 
 
   url
 
-  constructor(private microService: ContentprojectorService) {
+  constructor(private microService: ContentprojectorService,
+              private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
+    const self = this
     this.microService.projectorSubject$
+      .pipe(
+        takeLast(1)
+      )
       .subscribe((url) => {
-        this.url = url
+        this.url = self.transform(url)
       })
   }
 
   ngAfterViewInit() {
-    console.log(this.template)
+    console.log('template==>' + this.template)
   }
 
   ngOnDestroy() {
@@ -36,8 +42,19 @@ export class AkuminaIFrameComponent implements OnInit, AfterViewInit, OnDestroy 
     this.microService.projectorSubject$.unsubscribe()
   }
 
-  onLoad() {
-    return this.template
+  transform(url) {
+    console.log('unsafe pipe url --->' + url)
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url)
   }
 
 }
+
+
+
+
+
+// onLoad() {
+  // (load)='onLoad()'
+  // this is caugin recursive infinite loop
+  // return this.template
+// }

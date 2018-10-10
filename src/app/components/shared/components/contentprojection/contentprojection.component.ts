@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core'
-import {ContentprojectorService} from '../../services/contentprojector/contentprojector.service'
+import {ContentprojectorService} from '../../services/singleton-services/contentprojector.service'
 
 @Component({
   selector: 'app-contentprojection',
@@ -27,3 +27,8 @@ export class ContentprojectionComponent implements OnInit, AfterViewInit, OnDest
   }
 
 }
+
+//
+// template: `
+//               <ng-content select="app-contentprojection"></ng-content>
+//             `,

@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core'
 import {SwUpdate} from '@angular/service-worker'
-import {ContentprojectorService} from './components/shared/services/contentprojector/contentprojector.service'
+
+import {DomSanitizer} from '@angular/platform-browser'
+import {ContentprojectorService} from './components/shared/services/singleton-services/contentprojector.service'
 
 @Component({
   selector: 'app-dpcore',
@@ -16,11 +18,15 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   content: any
 
-  constructor(private updates: SwUpdate, private microService: ContentprojectorService) {
+  // @ViewChild('iframe') iframe: ElementRef
+
+  constructor(private updates: SwUpdate,
+              private sanitizer: DomSanitizer,
+              private microService: ContentprojectorService) {
 
     this.microService.project()
       .subscribe((content) => {
-      console.log('subscribed contewnt--->' + content)
+        console.log('subscribed contewnt--->' + content)
         this.content = content
       })
   }

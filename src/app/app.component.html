@@ -1,4 +1,34 @@
-<iframe width="420" height="345" [src]="content | safe" allowfullscreen>
-</iframe>
+<!--SUCCESS-->
+<!--<iframe width="420" height="345" [src]="content | unsafe" #iframe>-->
+<!--Alternate text if the iframe cannot be rendered-->
+<!--</iframe>-->
+
+<!--FAILED-->
+<!-- <iframe width="420" height="345" allowfullscreen #iframe>-->
+<!--{{content}}-->
+<!--</iframe>-->
+
+<!--FAILED-->
+<!--<app-contentprojection>-->
+<!--<iframe width="420" height="345" [src]="content | unsafe" #iframe></iframe>-->
+<!--</app-contentprojection>-->
+
+<app-contentprojection>
+  <div class="app-contentprojection">
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Favorite food" value="Sushi">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Leave a comment"></textarea>
+      </mat-form-field>
+    </form>
+  </div>
+</app-contentprojection>
 
 <router-outlet></router-outlet>
+
+
+<!--[style.display]="'none'"-->
+

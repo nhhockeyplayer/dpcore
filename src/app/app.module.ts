@@ -6,33 +6,42 @@ import {ServiceWorkerModule} from '@angular/service-worker'
 import {environment} from '../environments/environment'
 import {HttpClientModule} from '@angular/common/http'
 import {AppRoutingModule} from './app.routing.module'
-import {ReactiveFormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {FlexLayoutModule} from '@angular/flex-layout'
 
-import {ContentprojectionModule} from './components/shared/components/contentprojection/contentprojection.module'
 import {RouterModule} from '@angular/router'
-import {SafePipe} from './tools/safe.pipe'
-import {MaterialModule} from './packages/material/material.module'
+
+import {MaterialModule} from './components/shared/packages/material/material.module'
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations'
+import {SharedModule} from './components/shared/shared.module'
+import {CommonModule} from '@angular/common'
+import {UnSafePipe} from './components/shared/pipes/unsafe.pipe'
 
 @NgModule({
   declarations: [
     AppComponent,
-    SafePipe
+    UnSafePipe
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
     HttpClientModule,
+
+    FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
 
+    CommonModule,
+
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
+
+    SharedModule.forRoot(),
 
     RouterModule,
     AppRoutingModule,
 
-    MaterialModule,
-
-    ContentprojectionModule,
+    MaterialModule
 
   ],
   providers: [],

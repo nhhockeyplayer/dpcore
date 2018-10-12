@@ -2,7 +2,9 @@ import {Injectable} from '@angular/core'
 import {Observable, Subject} from 'rxjs/index'
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ResponsiveService {
   private isMobile = new Subject()
   public screenWidth: string

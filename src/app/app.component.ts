@@ -1,14 +1,23 @@
-import {HostListener, AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core'
-import {SwUpdate} from '@angular/service-worker'
-import {ResponsiveService} from './components/shared/services/singleton-services/responsive.service'
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  HostListener,
+  OnDestroy,
+  OnInit
+} from '@angular/core'
+
+import {ResponsiveService} from './components/shared/services/singleton/responsive.service'
 
 @Component({
-  selector: 'app-dpcore',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  host: {
-    '(window:resize)': 'onResize($event)'
-  }
+  changeDetection: ChangeDetectionStrategy.Default
+  // host: {
+  //   '(window:resize)': 'onResize($event)'
+  // }
 })
 export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   title = 'AKUMINA content projector microservice prototype'
@@ -17,8 +26,28 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     {link: 'content', label: 'Content'},
   ]
 
-  constructor(private updates: SwUpdate,
-              private responsiveService: ResponsiveService) {
+  // can inject it here or inject it from app.module
+  // but injecting here
+  // constructor(@Optional() @SkipSelf() sharedServicesModule: SharedServicesModule,
+  //             @Optional() @SkipSelf() sharedComponentsModule: SharedComponentsModule,
+  //             private responsiveService: ResponsiveService,
+  //             private detector: ChangeDetectorRef) {
+  //
+  //   if (sharedServicesModule) {       // https://angular.io/guide/singleton-services guard against multiple import
+  //     throw new Error(
+  //       'SharedServicesModule is already loaded. Import it in the AppModule only');
+  //   }
+  //   if (sharedComponentsModule) {
+  //     throw new Error(
+  //       'SharedComponentsModule is already loaded. Import it in the AppModule only');
+  //   }
+  // }
+  //
+  //
+
+  constructor(private responsiveService: ResponsiveService,
+              private detector: ChangeDetectorRef) {
+
   }
 
   ngOnInit() {
@@ -30,15 +59,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     })
     this.onResize(null)
-
-    if (this.updates.isEnabled) {
-      this.updates.available.subscribe(() => {
-        if (confirm('New version available. Load New Version?')) {
-          window.location.reload()
-        }
-      })
-    }
-
   }
 
   @HostListener('window:resize', ['$event'])

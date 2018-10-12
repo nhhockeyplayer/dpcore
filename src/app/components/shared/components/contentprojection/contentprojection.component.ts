@@ -1,36 +1,54 @@
-import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core'
-import {ResponsiveService} from '../../services/singleton-services/responsive.service'
+import {AfterViewInit, ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core'
+import {ContentprojectorService} from '../../services/singleton/contentprojector.service'
+import {map, tap} from 'rxjs/internal/operators'
+import {DomSanitizer} from '@angular/platform-browser'
+import {interval} from 'rxjs/index'
 
 @Component({
   selector: 'app-contentprojection',
   templateUrl: './contentprojection.component.html',
-  styleUrls: ['./contentprojection.component.scss']
+  styleUrls: ['./contentprojection.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class ContentprojectionComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('akumina') template
+  @ViewChild('akuminaTemplate') akuminaTemplate
 
-  public isMobile: Boolean
+  @Input() loading: boolean = true
 
-  constructor(private responsiveService: ResponsiveService) {
+  url
+
+  constructor(private sanitizer: DomSanitizer, private svc: ContentprojectorService) {
 
   }
 
   ngOnInit() {
-    this.onResize()
-    this.responsiveService.checkWidth()
+    console.log('container template' + this.akuminaTemplate)
+    const projector$ = this.svc.project()
+
+    projector$
+      .pipe(
+
+        map((url) => this.url = this.transform(url)),
+        tap( async (url) => {
+          console.log(url)
+          this.loading = false
+        })
+      )
+      .subscribe()
   }
 
   onResize() {
-    this.responsiveService.getMobileStatus()
-      .subscribe(isMobile => {
-        this.isMobile = isMobile
-      })
   }
 
   ngAfterViewInit() {
-    console.log('container template' + this.template)
+
   }
 
   ngOnDestroy() {
+  }
+
+  transform(url) {
+    console.log('unsafe pipe url --->' + url)
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url)
   }
 }

@@ -96,6 +96,10 @@
       true,
       "allow-null-check"
     ],
+    "semicolon": [
+      true,
+      "never"
+    ],
     "typedef-whitespace": [
       true,
       {
@@ -108,10 +112,6 @@
     ],
     "unified-signatures": true,
     "variable-name": false,
-    "semicolon": [
-      true,
-      "never"
-    ],
     "whitespace": [
       true,
       "check-branch",

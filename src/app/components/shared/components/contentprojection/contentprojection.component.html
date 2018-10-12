@@ -1,8 +1,35 @@
-<ng-template #akumina>
-  <app-akumina-iframe [template]="akumina"></app-akumina-iframe>
+<!-- temporary spinner UI -->
+<ng-template #spinner>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <h1>RxJS Asynchronous Observable is retrieving data... a secured SSL URL</h1>
+    <br>
+    <h1>Please wait 5 seconds</h1>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
+
+      <mat-spinner
+        [color]="accent"
+        [mode]="'indeterminate'">
+      </mat-spinner>
+    </mat-card>
+  </div>
 </ng-template>
 
 
-<ng-content *ngIf="!template"></ng-content>
+<!--Modeled Template to display our CONTENT -->
+<ng-template #akuminaTemplate>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <h1>Here is your projected data</h1>
+    <h1>Served up in a dedicated template</h1>
+    <h1>Housed within a container element injected by a template outlet</h1>
+    <br>
+    <h3>The actual CONTENT is a URL within iframe</h3>
 
-<ng-container *ngIf="template" [ngTemplateOutlet]="template"></ng-container>
+    <br>
+    <h2>Here is your secured url:        <b>{{url}}</b></h2>
+    <app-akumina-iframe [url]='url'></app-akumina-iframe>
+  </div>
+</ng-template>
+
+<ng-container [ngTemplateOutlet]="akuminaTemplate" *ngIf="(!loading); else spinner"></ng-container>

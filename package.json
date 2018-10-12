@@ -1,6 +1,10 @@
 {
   "name": "dpcore",
   "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nhhockeyplayer/dpcore.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,13 +13,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nhhockeyplayer/dpcore.git"
-  },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.0.3",
+    "@angular/animations": "^6.1.10",
     "@angular/cdk": "^6.4.7",
     "@angular/common": "^6.0.3",
     "@angular/compiler": "^6.0.3",
@@ -27,10 +27,10 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
-    "@angular/service-worker": "^6.0.3",
     "bcrypt-nodejs": "0.0.3",
     "core-js": "^2.5.4",
-    "npm": "^6.4.1",
+    "hammerjs": "^2.0.8",
+    "javascript-obfuscator": "^0.18.1",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
@@ -39,10 +39,11 @@
     "@angular/cli": "^6.2.4",
     "@angular/compiler-cli": "^6.0.3",
     "@angular/language-service": "^6.0.3",
-    "@angular/pwa": "^0.8.4",
+    "@types/hammerjs": "^2.0.36",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^10.11.4",
+    "@types/javascript-obfuscator": "0.0.5",
+    "@types/node": "^10.11.7",
     "codelyzer": "^4.5.0",
     "jasmine-core": "^3.2.1",
     "jasmine-spec-reporter": "~4.2.1",
@@ -53,7 +54,7 @@
     "karma-jasmine-html-reporter": "^1.3.1",
     "protractor": "^5.4.1",
     "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
-    "typescript": "^2.9.2"
+    "tslint": "~5.9.1",
+    "typescript": "~2.9.2"
   }
 }

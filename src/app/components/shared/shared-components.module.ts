@@ -5,15 +5,20 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import {ModuleWithProviders} from '@angular/compiler/src/core'
 
-import {FlexLayoutModule} from '@angular/flex-layout'
 import {HttpClientModule} from '@angular/common/http'
-import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 import {ContentprojectionComponent} from './components/contentprojection/contentprojection.component'
-import {ContentprojectorService} from './services/singleton-services/contentprojector.service'
-import {MaterialModule} from './packages/material/material.module'
 import {AkuminaIFrameComponent} from './components/akumina-frame/akumina-iframe.component'
-import {ResponsiveService} from './services/singleton-services/responsive.service'
+import {
+  MatCardModule,
+  MatInputModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatSortModule,
+  MatTableModule
+} from '@angular/material'
+import {FlexLayoutModule} from '@angular/flex-layout'
 
 const routerConfig: Routes = [
   {path: 'contentprojection', component: ContentprojectionComponent, data: {title: 'Contentprojection'}},
@@ -22,17 +27,25 @@ const routerConfig: Routes = [
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
     HttpClientModule,
-
     FormsModule,
     ReactiveFormsModule,
+    CommonModule,
+
     FlexLayoutModule,
 
-    CommonModule,
     RouterModule,
     RouterModule.forChild(routerConfig),
 
-    MaterialModule
+    // MaterialModule
+
+    MatCardModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     ContentprojectionComponent,
@@ -40,26 +53,29 @@ const routerConfig: Routes = [
   ],
   exports: [
     BrowserAnimationsModule,
-    NoopAnimationsModule,
     HttpClientModule,
-
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
+    CommonModule,
 
     RouterModule,
-    CommonModule,
-    MaterialModule,
+
+    MatCardModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
 
     ContentprojectionComponent,
     AkuminaIFrameComponent
   ]
 })
-export class SharedModule {
+export class SharedComponentsModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: SharedModule,
-      providers: [ResponsiveService, ContentprojectorService]
+      ngModule: SharedComponentsModule,
+      providers: []
     }
   }
 }

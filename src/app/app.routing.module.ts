@@ -12,10 +12,7 @@ export const routerConfig: Routes = [
     path: '',
     redirectTo: '/',
     pathMatch: 'full'
-  }, {
-    path: 'content',
-    loadChildren: './components/shared/shared.module#SharedModule'
-  }, {
+  },  {
     path: '**',
     redirectTo: '/'
   },
@@ -34,3 +31,10 @@ export const routerConfig: Routes = [
 })
 export class AppRoutingModule {
 }
+
+
+//
+// {
+//   path: 'content',
+//     loadChildren: './components/shared/shared.module#SharedModule'
+// },

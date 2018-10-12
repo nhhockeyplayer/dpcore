@@ -41,6 +41,7 @@ export class ContentprojectorService {
         }),
         map((item) => item),
         map((url) => this.transform(url)),
+        // map((url) => obfuscator.obfuscate((url)) ),
         delay(5000)
       )
     return source$

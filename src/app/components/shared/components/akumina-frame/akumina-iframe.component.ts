@@ -9,14 +9,17 @@ import {
   SimpleChanges
 } from '@angular/core'
 
+// import * as JavaScriptObfuscator from 'javaScript-obfuscator'
+
 @Component({
   selector: 'app-akumina-iframe',
   template: `
     <iframe #akumina
-            [width]="600"
-            [height]="400"
+            [width]="1100"
+            [height]="800"
             [id]='akumina'
-            [src]='url'>
+            [src]='url'> 
+            <!--[src]='window.btoa(url)'>-->
     </iframe>
   `,
   styleUrls: ['./akumina-iframe.component.scss'],
@@ -29,14 +32,12 @@ export class AkuminaIFrameComponent implements OnChanges, OnInit, AfterViewInit,
   }
 
   ngOnInit() {
-
   }
 
   ngAfterViewInit() {
   }
 
   ngOnDestroy() {
-
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -44,28 +45,11 @@ export class AkuminaIFrameComponent implements OnChanges, OnInit, AfterViewInit,
     console.log('PROPERTY: changes.url.previousValue=' + changes.url.previousValue)
     console.log('PROPERTY: changes.url.currentValue' + changes.url.currentValue)
 
+    // this.url = JavaScriptObfuscator.obfuscate(this.url)
 
+    // this.url = window.atob(this.url)
+
+    console.log('PROPERTY: obfuscated = ' + this.url)
   }
 
 }
-//
-// ,
-// {
-//   compact: false,
-//     controlFlowFlattening: true
-// }
-
-// onLoad() {
-// (load)='onLoad()'
-// this is caugin recursive infinite loop
-// return this.template
-// }
-
-// url: SafeResourceUrl
-
-//             [src]='url.getObfuscatedCode()' >
-
-// this.url = obfuscator.obfuscate(self.transform(url).toString())
-// .pipe(
-//   takeLast(1)
-// )

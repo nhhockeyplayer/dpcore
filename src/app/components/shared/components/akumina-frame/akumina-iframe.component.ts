@@ -1,7 +1,13 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core'
-import {ContentprojectorService} from '../../services/singleton/contentprojector.service'
-
-// import * as obfuscator from 'javascript-obfuscator'
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges
+} from '@angular/core'
 
 @Component({
   selector: 'app-akumina-iframe',
@@ -16,7 +22,7 @@ import {ContentprojectorService} from '../../services/singleton/contentprojector
   styleUrls: ['./akumina-iframe.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AkuminaIFrameComponent implements OnInit, AfterViewInit, OnDestroy {
+export class AkuminaIFrameComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input() url
 
   constructor() {
@@ -33,7 +39,21 @@ export class AkuminaIFrameComponent implements OnInit, AfterViewInit, OnDestroy 
 
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('PROPERTY: url=' + this.url)
+    console.log('PROPERTY: changes.url.previousValue=' + changes.url.previousValue)
+    console.log('PROPERTY: changes.url.currentValue' + changes.url.currentValue)
+
+
+  }
+
 }
+//
+// ,
+// {
+//   compact: false,
+//     controlFlowFlattening: true
+// }
 
 // onLoad() {
 // (load)='onLoad()'

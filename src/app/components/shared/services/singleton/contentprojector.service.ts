@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 import {from} from 'rxjs/index'
 import {delay, map, tap} from 'rxjs/internal/operators'
+import {DomSanitizer} from '@angular/platform-browser'
 
 /**
  * MicroService
@@ -18,10 +19,6 @@ import {delay, map, tap} from 'rxjs/internal/operators'
  *    was the only SSL website available to test against to fabricate/simulate HTML full page  projected document
  */
 
-//
-// @Injectable({
-//   providedIn: 'root'
-// })
 @Injectable({
   providedIn: 'root',
 })
@@ -30,9 +27,7 @@ export class ContentprojectorService {
   private static arbitrarySSLWebsite = 'https://api.chucknorris.io/jokes/random'
   private static akuminaSSLVideo = 'https://www.youtube.com/watch?v=3v8rwT559iY&output=embed&autoplay=1'
 
-  // public privateSubject$ = new BehaviorSubject<any>(null)
-
-  constructor(private http: HttpClient) {
+  constructor(private sanitizer: DomSanitizer, private http: HttpClient) {
     console.log('SINGLETON Loaded Instance ContentprojectorService')
   }
 
@@ -45,8 +40,15 @@ export class ContentprojectorService {
           return item
         }),
         map((item) => item),
+        map((url) => this.transform(url)),
         delay(5000)
       )
     return source$
+  }
+
+  transform(url) {
+    // this.url = obfuscator.obfuscate(self.transform(url).toString())
+    console.log('unsafe pipe url --->' + url)
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url)
   }
 }

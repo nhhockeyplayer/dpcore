@@ -1,8 +1,6 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core'
 import {ContentprojectorService} from '../../services/singleton/contentprojector.service'
 import {map, tap} from 'rxjs/internal/operators'
-import {DomSanitizer} from '@angular/platform-browser'
-import {interval} from 'rxjs/index'
 
 @Component({
   selector: 'app-contentprojection',
@@ -17,7 +15,7 @@ export class ContentprojectionComponent implements OnInit, AfterViewInit, OnDest
 
   url
 
-  constructor(private sanitizer: DomSanitizer, private svc: ContentprojectorService) {
+  constructor(private svc: ContentprojectorService) {
 
   }
 
@@ -27,9 +25,8 @@ export class ContentprojectionComponent implements OnInit, AfterViewInit, OnDest
 
     projector$
       .pipe(
-
-        map((url) => this.url = this.transform(url)),
-        tap( async (url) => {
+        map((url) => this.url = url),
+        tap(async (url) => {
           console.log(url)
           this.loading = false
         })
@@ -47,8 +44,4 @@ export class ContentprojectionComponent implements OnInit, AfterViewInit, OnDest
   ngOnDestroy() {
   }
 
-  transform(url) {
-    console.log('unsafe pipe url --->' + url)
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url)
-  }
 }
